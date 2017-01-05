@@ -1,5 +1,6 @@
 package com.mario.bean.odata;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class EmployeeODataAgent implements ODataInterface{
 
 	@Override
 	public List<?> getRelatedEntity(Object source, String relatedEntityName, Map<String, Object> keys,
-			AnnotatedNavInfo navInfo) {
+			Field sourceField) {
 		return new ArrayList<>();
 	}
 

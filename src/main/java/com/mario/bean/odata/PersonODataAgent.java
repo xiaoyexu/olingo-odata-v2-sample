@@ -1,5 +1,6 @@
 package com.mario.bean.odata;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class PersonODataAgent implements ODataInterface{
 	}
 	@Override
 	public List<?> getRelatedEntity(Object source, String relatedEntityName, Map<String, Object> keys,
-			AnnotatedNavInfo navInfo) {
+			Field sourceField) {
 		log.debug("getRelatedEntity called");
 		log.debug("relatedEntityName is " + relatedEntityName);
 		Person p = (Person)source;
