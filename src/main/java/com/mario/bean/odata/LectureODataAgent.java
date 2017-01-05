@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.olingo.odata2.annotation.processor.core.util.AnnotationHelper.AnnotatedNavInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mario.bean.Lecture;
@@ -31,8 +32,9 @@ public class LectureODataAgent implements ODataInterface{
 	}
 
 	@Override
-	public List<?> getRelatedEntity(Object source, String relatedEntityName, Map<String, Object> keys) {
-		return null;
+	public List<?> getRelatedEntity(Object source, String relatedEntityName, Map<String, Object> keys,
+			AnnotatedNavInfo navInfo) {
+		return new ArrayList<>();
 	}
 
 	@Override

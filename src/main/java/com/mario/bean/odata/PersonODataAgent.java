@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.olingo.odata2.annotation.processor.core.util.AnnotationHelper.AnnotatedNavInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mario.bean.Person;
@@ -29,16 +30,16 @@ public class PersonODataAgent implements ODataInterface{
 		log.debug("getEntity id is " + id.intValue());
 		return personRepo.findById(id);
 	}
-
 	@Override
-	public List<?> getRelatedEntity(Object source, String relatedEntityName, Map<String, Object> keys) {
+	public List<?> getRelatedEntity(Object source, String relatedEntityName, Map<String, Object> keys,
+			AnnotatedNavInfo navInfo) {
 		log.debug("getRelatedEntity called");
 		log.debug("relatedEntityName is " + relatedEntityName);
 		Person p = (Person)source;
 		if (relatedEntityName.equalsIgnoreCase("AddressSet")) {
 			return p.getAddressList();
 		}
-		return new ArrayList();
+		return new ArrayList<>();
 	}
 
 	@Override
