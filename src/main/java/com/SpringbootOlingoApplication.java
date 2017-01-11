@@ -10,8 +10,6 @@ import javax.sql.DataSource;
 
 import org.apache.olingo.odata2.api.ODataServiceFactory;
 import org.h2.tools.Server;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -19,28 +17,19 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.luigi.bean.odata.StudentODataAgent;
 import com.mario.bean.odata.AddressODataAgent;
 import com.mario.bean.odata.EmployeeODataAgent;
 import com.mario.bean.odata.LectureODataAgent;
-//import com.mario.bean.odata.EmployeeODataAgent;
-//import com.luigi.bean.odata.EmployeeODataAgent;
 import com.mario.bean.odata.PersonODataAgent;
-//import com.sap.dbs.dbx.i068191.annotation.processor.MyODataServiceFactory;
-//import com.sap.dbs.dbx.i068191.servlet.SimpleODataServlet;
 import com.sap.dbs.dbx.i068191.annotation.processor.MyODataServiceFactory;
 import com.sap.dbs.dbx.i068191.servlet.SimpleODataServlet;
 
@@ -49,6 +38,7 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 @ServletComponentScan
 @Slf4j
+@ComponentScan(basePackageClasses = { com.sap.dbs.dbx.i068191.util.SpringUtils.class, SpringbootOlingoApplication.class })
 public class SpringbootOlingoApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
@@ -164,4 +154,3 @@ class LuigiODataServlet extends SimpleODataServlet {
 		setoDataServiceFactoryBeanName("LuigiODataServiceFactory");
 	}
 }
-
